@@ -5,6 +5,8 @@
 
 		"theme": "bootswatch-darkly",
 
+        "on_user_created_code": "Languages.insert({ name: 'Svenska'}); languages.insert({ name: 'Arabiska'});",
+        
 		"use_collection2": false,
 
 		"collections": [
@@ -13,11 +15,35 @@
 				"fields": [
 					{ "name": "name", "title": "Name", "required": true, "exportable": true },
 					{ "name": "country", "title": "Country", "default": "Sweden", "exportable": true },
-					{ "name": "language", "title": "Language", "required": true, "exportable": true },
+
+                    {
+						"name": "language",
+						"title": "Language",
+						"required": true,
+						"input": "select",
+						"lookup_query_name": "language_list",
+						"lookup_field": "name",
+						"lookup_key": "_id",
+						"show_in_dataview": false,
+						"show_in_read_only_form": false,
+						"exportable": false,
+
+						"join_collection": "languages",
+						"join_fields": ["name"],
+						"join_container": "language"
+					},
                     { "name": "ingredients", "title": "Ingredients", "input": "textarea", "exportable": true },
 					{ "name": "note", "title": "Note", "input": "textarea", "exportable": true },
+                    { "name": "Steps", "title": "Steps", "input": "textarea", "exportable": true,  "show_in_dataview": false }
+				]
+			},
+            
+            "name": "languages",
+				"fields": [
+					{ "name": "name", "title": "Name", "required": true, "exportable": true },
 				]
 			}
+            
 		],
 
 		"queries": [
