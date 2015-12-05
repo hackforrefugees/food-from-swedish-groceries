@@ -5,6 +5,15 @@
 
 		"theme": "bootswatch-darkly",
 
+<<<<<<< HEAD
+=======
+        "server_startup_code": "Languages.insert({ name: 'Danska'});
+                            Languages.insert({ name: 'Arabiska'}); 
+                            Languages.insert({ name: 'Franska'});
+                            Countries.insert({ name: 'Sverige'});
+                            Countries.insert({ name: 'Tunisien'});",
+        
+>>>>>>> ff4624b18b6c19088c75274d3f130fa1ef8920ac
 		"use_collection2": false,
 
 		"collections": [
@@ -17,12 +26,63 @@
 				"name": "recipies",
 				"fields": [
 					{ "name": "name", "title": "Name", "required": true, "exportable": true },
+<<<<<<< HEAD
 					{ "name": "country", "title": "Country", "default": "Sweden", "exportable": true },
 					{ "name": "language", "title": "Language", "required": true, "exportable": true },
                     			{ "name": "ingredients", "title": "Ingredients", "input": "textarea", "exportable": true },
 					{ "name": "note", "title": "Note", "input": "textarea", "exportable": true },
 					{ "name": "fileId", "title": "File", "input": "file", "file_collection": "files", "file_container": "file", "exportable": true},
 				]
+=======
+					{ 
+                        "name": "country", 
+                        "title": "Country", 
+                        "default": "Sweden", 
+						"input": "select",
+                        "exportable": true,
+						"lookup_query_name": "country_list",
+						"lookup_field": "name",
+						"lookup_key": "_id",
+						"show_in_dataview": true,
+						"show_in_read_only_form": false,
+                        
+						"join_collection": "countries",
+						"join_fields": ["name"],
+						"join_container": "country"
+                    },
+                    {
+						"name": "language",
+						"title": "Language",
+						"required": true,
+						"input": "select",
+						"lookup_query_name": "language_list",
+						"lookup_field": "name",
+						"lookup_key": "_id",
+						"show_in_dataview": false,
+						"show_in_read_only_form": false,
+						"exportable": false,
+
+						"join_collection": "languages",
+						"join_fields": ["name"],
+						"join_container": "language"
+					},
+                    { "name": "ingredients", "title": "Ingredients", "input": "textarea", "exportable": true },
+					{ "name": "note", "title": "Note", "input": "textarea", "exportable": true },
+                    { "name": "Steps", "title": "Steps", "input": "textarea", "exportable": true,  "show_in_dataview": false }
+				]
+			},
+            {
+                "name": "languages",
+                    "fields": [
+                        { "name": "name", "title": "Name", "required": true, "exportable": true },
+                    ]
+			},
+            {
+                "name": "countries",
+                    "fields": [
+                        { "name": "name", "title": "Name", "required": true, "exportable": true },
+                    ]
+>>>>>>> ff4624b18b6c19088c75274d3f130fa1ef8920ac
 			}
 		],
 
@@ -43,7 +103,23 @@
 				"collection": "recipies",
 				"filter": { "_id": ":recipeId" },
 				"find_one": true
-			}
+			},
+            {
+                "name": "language_list",
+				"collection": "languages",
+				"filter": {},
+                "options": {
+					"sort": ["name"]
+				}
+            },
+            {
+                "name": "country_list",
+				"collection": "countries",
+				"filter": {},
+                "options": {
+					"sort": ["name"]
+				}
+            },
 		],
 
 		"free_zone": {

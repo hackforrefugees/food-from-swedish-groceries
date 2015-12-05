@@ -16,5 +16,25 @@ standard-minifiers      # JS/CSS minifiers run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 
+<<<<<<< HEAD
 autopublish             # Publish all data to the clients (for prototyping)
 insecure                # Allow all DB writes from clients (for prototyping)
+=======
+http
+email
+spiderable
+ejson
+random
+iron:router
+natestrauser:font-awesome
+matb33:collection-hooks
+copleykj:livestamp
+less
+nemo64:bootstrap
+reactive-dict
+mizzao:bootboxjs
+mrt:moment
+rajit:bootstrap3-datepicker
+perak:joins
+aldeed:collection2
+>>>>>>> ff4624b18b6c19088c75274d3f130fa1ef8920ac
