@@ -6,5 +6,29 @@ TODO list for the Food from Swedihs groceries
 
 3) Make a very rough idea sketch in paint?
 
+ Start Recipe
+ Input: From an anonym user
+ Needed: Language, Country, Foods-name, nr of portions, Ingredients, Steps, Additional info, Food-Picture.
+ 
+ Output: To an Inbox that a process group including translators and food experts can excess
+ Result: An compressed version of the recipe with language and food name visible and a checklist what needed to do
+
+Additional Info: Allergies, serving tips 
+Checklist: Translations to Swedish, Finding allagies info, Substitution of ingredients, Link to "www.recepthjalpen.se" to a uniq ingrediense.
+
+
+Translated Recipe
+Input: Original Language, Country, Foods-name, number of portions, Ingredients, Steps, Additional info, Food-Picture, reference from the inbox, Additional links
+
+
+Output: An compressed version in an list sorted in difference contries, with swedish food-name and food-name with the Original Language and Picture as a link to the recipie.
+
+Final Recipie output: foodname in swedish and orignal language and picture, ingredients, steps, additional info, additional links.
+
+additional links: Link To original recipie, recept langueges
+        
+
 4) Länka till recepthjälpen där det går?
+
+
 
