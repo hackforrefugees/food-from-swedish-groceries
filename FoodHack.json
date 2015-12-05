@@ -5,7 +5,11 @@
 
 		"theme": "bootswatch-darkly",
 
-        "on_user_created_code": "Languages.insert({ name: 'Svenska'}); languages.insert({ name: 'Arabiska'});",
+        "server_startup_code": "Languages.insert({ name: 'Danska'});
+                            Languages.insert({ name: 'Arabiska'}); 
+                            Languages.insert({ name: 'Franska'});
+                            Countries.insert({ name: 'Sverige'});
+                            Countries.insert({ name: 'Tunisien'});",
         
 		"use_collection2": false,
 
@@ -14,8 +18,22 @@
 				"name": "recipies",
 				"fields": [
 					{ "name": "name", "title": "Name", "required": true, "exportable": true },
-					{ "name": "country", "title": "Country", "default": "Sweden", "exportable": true },
-
+					{ 
+                        "name": "country", 
+                        "title": "Country", 
+                        "default": "Sweden", 
+						"input": "select",
+                        "exportable": true,
+						"lookup_query_name": "country_list",
+						"lookup_field": "name",
+						"lookup_key": "_id",
+						"show_in_dataview": true,
+						"show_in_read_only_form": false,
+                        
+						"join_collection": "countries",
+						"join_fields": ["name"],
+						"join_container": "country"
+                    },
                     {
 						"name": "language",
 						"title": "Language",
@@ -37,11 +55,17 @@
                     { "name": "Steps", "title": "Steps", "input": "textarea", "exportable": true,  "show_in_dataview": false }
 				]
 			},
-            
-            "name": "languages",
-				"fields": [
-					{ "name": "name", "title": "Name", "required": true, "exportable": true },
-				]
+            {
+                "name": "languages",
+                    "fields": [
+                        { "name": "name", "title": "Name", "required": true, "exportable": true },
+                    ]
+			},
+            {
+                "name": "countries",
+                    "fields": [
+                        { "name": "name", "title": "Name", "required": true, "exportable": true },
+                    ]
 			}
             
 		],
@@ -63,7 +87,23 @@
 				"collection": "recipies",
 				"filter": { "_id": ":recipeId" },
 				"find_one": true
-			}
+			},
+            {
+                "name": "language_list",
+				"collection": "languages",
+				"filter": {},
+                "options": {
+					"sort": ["name"]
+				}
+            },
+            {
+                "name": "country_list",
+				"collection": "countries",
+				"filter": {},
+                "options": {
+					"sort": ["name"]
+				}
+            },
 		],
 
 		"free_zone": {

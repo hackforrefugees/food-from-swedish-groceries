@@ -19,6 +19,8 @@ this.RecipiesEditController = RouteController.extend({
 		
 
 		var subs = [
+			Meteor.subscribe("country_list"),
+			Meteor.subscribe("language_list"),
 			Meteor.subscribe("recipe", this.params.recipeId)
 		];
 		var ready = true;
@@ -34,6 +36,8 @@ this.RecipiesEditController = RouteController.extend({
 
 		return {
 			params: this.params || {},
+			country_list: Countries.find({}, {sort:["name"]}),
+			language_list: Languages.find({}, {sort:["name"]}),
 			recipe: Recipies.findOne({_id:this.params.recipeId}, {})
 		};
 		/*DATA_FUNCTION*/

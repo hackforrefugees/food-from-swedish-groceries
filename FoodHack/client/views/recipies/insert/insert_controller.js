@@ -19,6 +19,8 @@ this.RecipiesInsertController = RouteController.extend({
 		
 
 		var subs = [
+			Meteor.subscribe("country_list"),
+			Meteor.subscribe("language_list"),
 			Meteor.subscribe("recipies_empty")
 		];
 		var ready = true;
@@ -34,6 +36,8 @@ this.RecipiesInsertController = RouteController.extend({
 
 		return {
 			params: this.params || {},
+			country_list: Countries.find({}, {sort:["name"]}),
+			language_list: Languages.find({}, {sort:["name"]}),
 			recipies_empty: Recipies.findOne({_id:null}, {})
 		};
 		/*DATA_FUNCTION*/
