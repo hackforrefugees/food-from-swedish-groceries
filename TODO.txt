@@ -1,0 +1,10 @@
+TODO list for the Food from Swedihs groceries 
+
+1) Email volunteers to specify the problem space
+
+2) Attend the Meteor workshop for better idea of how to implement the app.
+
+3) Make a very rough idea sketch in paint?
+
+4) Länka till recepthjälpen där det går?
+
