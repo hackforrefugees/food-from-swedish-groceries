@@ -9,13 +9,19 @@
 
 		"collections": [
 			{
+				"name": "files",
+				"type": "file_collection",
+				"storage_adapters": ["gridfs"]
+			},
+			{
 				"name": "recipies",
 				"fields": [
 					{ "name": "name", "title": "Name", "required": true, "exportable": true },
 					{ "name": "country", "title": "Country", "default": "Sweden", "exportable": true },
 					{ "name": "language", "title": "Language", "required": true, "exportable": true },
-                    { "name": "ingredients", "title": "Ingredients", "input": "textarea", "exportable": true },
+                    			{ "name": "ingredients", "title": "Ingredients", "input": "textarea", "exportable": true },
 					{ "name": "note", "title": "Note", "input": "textarea", "exportable": true },
+					{ "name": "fileId", "title": "File", "input": "file", "file_collection": "files", "file_container": "file", "exportable": true},
 				]
 			}
 		],
@@ -90,6 +96,7 @@
 								{ "name": "recipeId", "value": "this._id" }
 							]
 						}
+						
 					],
 					"pages": [
 						{
@@ -143,6 +150,21 @@
 
 									"query_name": "recipe",
 									"query_params": []
+								}
+							]
+						},
+						
+						{
+							"name": "insert",
+							"components": [
+								{
+									"name": "add_file",
+									"title": "Add new file",
+									"type": "form",
+									"mode": "insert",
+									"query_name": "recipies",
+									"submit_route": "recipies",
+									"cancel_route": "recipies"
 								}
 							]
 						}
