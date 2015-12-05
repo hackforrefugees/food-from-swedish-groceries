@@ -23,9 +23,9 @@ Input: Original Language, Country, Foods-name, number of portions, Ingredients, 
 
 Output: An compressed version in an list sorted in difference contries, with swedish food-name and food-name with the Original Language and Picture as a link to the recipie.
 
-Final Recipie output: foodname in swedish and orignal language and picture, ingredients, steps, additional info, additional links.
+Final Recipie output: foodname in swedish and orignal language and picture, ingredients, steps, additional info, additional links, comment section!
 
-additional links: Link To original recipie, recept langueges
+Additional links: To original recipie, Recepthjälpen.
         
 
 4) Länka till recepthjälpen där det går?
