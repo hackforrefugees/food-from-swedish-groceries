@@ -23,7 +23,6 @@
 				"name": "recipies",
 				"fields": [
 					{ "name": "name", "title": "Name", "required": true, "exportable": true },
-
 					{ 
                         "name": "country", 
                         "title": "Country", 
@@ -80,6 +79,12 @@
 				"name": "recipies",
 				"collection": "recipies",
 				"filter": {}
+			},
+			{
+				"name": "get_recipe",
+				"collection": "recipies",
+				"filter": {},
+                "find_one": true  
 			},
 			{
 				"name": "recipies_empty",
@@ -227,7 +232,7 @@
 									"title": "Add new file",
 									"type": "form",
 									"mode": "insert",
-									"query_name": "recipies",
+									"query_name": "get_recipe",
 									"submit_route": "recipies",
 									"cancel_route": "recipies"
 								}
