@@ -42,21 +42,7 @@
 						"join_fields": ["name"],
 						"join_container": "country"
                     },
-					{ 
-                        "name": "thiscountry", 
-                        "title": "Country", 
-                        "default": "Sweden", 
-                        "exportable": true,
-						"lookup_query_name": "get_country",
-						"lookup_field": "name",
-						"lookup_key": "_id",
-						"show_in_dataview": true,
-						"show_in_read_only_form": false,
-                        
-						"join_collection": "countries",
-						"join_fields": ["name"],
-						"join_container": "country"
-                    },
+
                     
                     {
 						"name": "language",
@@ -114,10 +100,10 @@
 						"join_fields": ["name"],
 						"join_container": "language"
 					},
-                    { "name": "ingredients", "title": "Ingredients", "input": "textarea",  "show_in_dataview": false, "exportable": true },
-					{ "name": "note", "title": "Note", "input": "textarea", "exportable": true },
-                    { "name": "Steps", "title": "Steps", "input": "textarea", "exportable": true,  "show_in_dataview": false },
-	             { "name": "fileId", "title": "File", "input": "file", "file_collection": "files", "file_container": "file",  "show_in_dataview": false, "exportable": true},
+                    { "name": "ingredients", "title": "المكونات", "input": "textarea",  "show_in_dataview": false, "exportable": true },
+					{ "name": "note", "title": "ملاحظة", "input": "textarea", "exportable": true },
+                    { "name": "Steps", "title": "خطوات", "input": "textarea", "exportable": true,  "show_in_dataview": false },
+	             { "name": "fileId", "title": "ملف", "input": "file", "file_collection": "files", "file_container": "file",  "show_in_dataview": false, "exportable": true},
 				]   
 			},
             
@@ -200,7 +186,7 @@
 					"name": "main_menu",
 					"type": "menu",
 					"items": [
-						{ "title": "Home page", "route": "home" },
+						{ "title": "Home page/الصفحة الرئيسية", "route": "home" },
 						{ "title": "Recipies",  "route": "recipies" },
                         { "title": "انت سوف",   "route": "recipies_arabic" }
 					]

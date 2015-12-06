@@ -12,6 +12,9 @@
 
 <template name="RecipiesArabicView">
 	<div id="recipies-arabic-view" class="">
+		<h2 id="component-title">
+			انت سوف
+		</h2>
 		<form id="dataview-controls" class="form-inline">
 			<div id="dataview-controls-insert" class="form-group ">
 				<button type="submit" id="dataview-insert-button" class="btn btn-success">
@@ -82,7 +85,7 @@
 		{{/if}}		
 		{{else}}
 		<div class="alert alert-info">
-			insert_arabic :(
+			لا وصفات باللغة العربية بعد :(
 		</div>
 		{{/if}}
 	</div>
@@ -93,13 +96,13 @@
 		<thead id="dataview-table-header">
 			<tr id="dataview-table-header-row">
 				<th class="th-sortable" data-sort="name">
-					Name
+					اسم
 				</th>
 				<th class="th-sortable" data-sort="country">
-					Country
+					بلد
 				</th>
 				<th class="th-sortable" data-sort="note">
-					Note
+					ملاحظة
 				</th>
 				<th>
 					&nbsp;

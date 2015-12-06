@@ -33,10 +33,13 @@ Additional links: To original recipie, Recepthjälpen.
 
 
 Current state:
-Add nice pictures
-Fix so that country shows up properly
-ideally we can make translate work as intended. 
-change strings to arabic (ask someone who speaks arabic for help). CAn probably use related queueries and maybe transform or somesuch to 
-use data from the other language collection. 
+Add nice pictures Stefan doing
 
+Fix so that country shows up properly Me doing
+
+ideally we can make translate work as intended. CAn probably use related queueries and maybe transform or somesuch to 
+use data from the other language collection. HARD TO DO IT SEEMS
+
+
+change strings to arabic (ask someone who speaks arabic for help). DONE 
 
