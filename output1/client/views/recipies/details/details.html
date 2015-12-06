@@ -1,0 +1,107 @@
+<template name="RecipiesDetails">
+	<div class="page-container container" id="content">
+		<div class="row" id="title_row">
+			<div class="col-md-12">
+				<div id="page_menu" class="pull-right">
+				</div>
+			</div>
+		</div>
+		{{> RecipiesDetailsDetailsForm}}
+	</div>
+</template>
+
+<template name="RecipiesDetailsDetailsForm">
+	<div id="recipies-details-details-form" class="">
+		<h2 id="component-title">
+			<a href="#" id="form-back-button" class="btn btn-default" title="back">
+				<span class="fa fa-chevron-left">
+				</span>
+			</a>
+			Details
+		</h2>
+		<form role="form" class="form-horizontal">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}				
+				
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-name">
+				<label for="name" class="col-sm-3 control-label">
+					Name
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{recipe.name}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-country">
+				<label for="country" class="col-sm-3 control-label">
+					Country
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{recipe.country}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-language">
+				<label for="language" class="col-sm-3 control-label">
+					Language
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{recipe.language}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-ingredients">
+				<label for="ingredients" class="col-sm-3 control-label">
+					Ingredients
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{recipe.ingredients}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-note">
+				<label for="note" class="col-sm-3 control-label">
+					Note
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						{{recipe.note}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-file-id">
+				<label for="fileId" class="col-sm-3 control-label">
+					File
+				</label>
+				<div class="input-div col-sm-9">
+					<p class="form-control-static">
+						<a href="/cfs/files/files/{{recipe.fileId}}" target="_blank">
+							
+							<img src="/cfs/files/files/{{recipe.fileId}}" width="50%">
+						</a>
+					</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="submit-div col-sm-9 col-sm-offset-3">
+					<a href="#" id="form-close-button" class="btn btn-primary">
+						OK
+					</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</template>
+

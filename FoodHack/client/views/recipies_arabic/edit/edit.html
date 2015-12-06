@@ -1,0 +1,142 @@
+<template name="RecipiesArabicEdit">
+	<div class="page-container container" id="content">
+		<div class="row" id="title_row">
+			<div class="col-md-12">
+				<div id="page_menu" class="pull-right">
+				</div>
+			</div>
+		</div>
+		{{> RecipiesArabicEditEditForm}}
+	</div>
+</template>
+
+<template name="RecipiesArabicEditEditForm">
+	<div id="recipies-arabic-edit-edit-form" class="">
+		<h2 id="component-title">
+			تغيير صفة
+		</h2>
+		<form role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}				
+				
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-name">
+				<label for="name">
+					اسم
+				</label>
+				<div class="input-div">
+					<input type="text" name="name" value="{{recipe_arabic.name}}" class="form-control" autofocus="autofocus" required="required">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-country">
+				<label for="country">
+					بلد
+				</label>
+				<div class="input-div">
+					<select class="form-control" name="country">
+						{{#each country_list}}
+						<option value="{{_id}}" {{optionIsSelected ../recipe_arabic.country _id}}>
+							{{name}}
+						</option>
+						{{/each}}
+					</select>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-language">
+				<label for="language">
+					لغة
+				</label>
+				<div class="input-div">
+					<select class="form-control" name="language" required="required">
+						{{#each language_list}}
+						<option value="{{_id}}" {{optionIsSelected ../recipe_arabic.language _id}}>
+							{{name}}
+						</option>
+						{{/each}}
+					</select>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-ingredients">
+				<label for="ingredients">
+					المكونات
+				</label>
+				<div class="input-div">
+					<textarea class="form-control" name="ingredients">{{recipe_arabic.ingredients}}</textarea>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-note">
+				<label for="note">
+					ملاحظة
+				</label>
+				<div class="input-div">
+					<textarea class="form-control" name="note">{{recipe_arabic.note}}</textarea>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-steps">
+				<label for="Steps">
+					خطوات
+				</label>
+				<div class="input-div">
+					<textarea class="form-control" name="Steps">{{recipe_arabic.Steps}}</textarea>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-file-id">
+				<label for="fileId">
+					ملف
+				</label>
+				<div class="input-div">
+					<input type="file" id="field-file-id" class="file" multiple="false" data-show-upload="false" data-show-caption="true" data-field="fileId">
+					<input type="hidden" name="fileId" value="{{recipe_arabic.fileId}}">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="submit-div">
+					<button id="form-submit-button" class="btn btn-success" type="submit">
+						<span class="fa fa-check">
+						</span>
+						Save
+					</button>
+					<a href="#" id="form-cancel-button" class="btn btn-default">
+						Cancel
+					</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</template>
+

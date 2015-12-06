@@ -1,0 +1,375 @@
+{
+	"application": {
+
+		"title": "Cooking with Swedish groceries",
+
+		"theme": "bootswatch-journal",
+
+        "server_startup_code": "
+                            Languages.remove({});
+			    Languages.insert({ name: 'Danska'});
+                            Languages.insert({ name: 'Arabiska'}); 
+                            Languages.insert({ name: 'Franska'});
+			    Countries.remove({});
+                            Countries.insert({ name: 'Sverige'});
+                            Countries.insert({ name: 'Tunisien'});",
+        
+		"use_collection2": false,
+
+		"collections": [
+			{
+				"name": "files",
+				"type": "file_collection",
+				"storage_adapters": ["gridfs"]
+			},
+			{
+				"name": "recipies",
+				"fields": [
+					{ "name": "name", "title": "Name", "required": true},
+					{ 
+                        "name": "country", 
+                        "title": "Country", 
+                        "default": "Sweden", 
+						"input": "select",
+                        "exportable": true,
+						"lookup_query_name": "country_list",
+						"lookup_field": "name",
+						"lookup_key": "_id",
+						"show_in_dataview": true,
+						"show_in_read_only_form": false,
+                        "show_in_dataview": false,
+						"join_collection": "countries",
+						"join_fields": ["name"],
+						"join_container": "country"
+                    },
+
+                    
+                    {
+						"name": "language",
+						"title": "Language",
+						"required": true,
+						"input": "select",
+						"lookup_query_name": "language_list",
+						"lookup_field": "name",
+						"lookup_key": "_id",
+						"show_in_dataview": false,
+						"show_in_read_only_form": false,
+						"exportable": false,
+
+						"join_collection": "languages",
+						"join_fields": ["name"],
+						"join_container": "language"
+					},
+                    { "name": "ingredients", "title": "Ingredients", "input": "textarea", "show_in_dataview": false, "show_in_dataview": false, "exportable": true },
+					{ "name": "note", "title": "Note", "input": "textarea", "exportable": true },
+                    { "name": "Steps", "title": "Steps", "input": "textarea", "exportable": true,  "show_in_dataview": false },
+                    { "name": "fileId", "title": "File", "input": "file", "file_collection": "files", "file_container": "file", "show_in_dataview": false,   "exportable": true},
+				]
+			},
+            
+            {
+				"name": "recipies_arabic",
+				"fields": [
+					{ "name": "name", "title": "اسم", "required": true, "exportable": true },
+					{ 
+                        "name": "country", 
+                        "title": "بلد", 
+                        "default": "أفغانستان", 
+						"input": "select",
+                        "exportable": true,
+						"lookup_query_name": "country_list",
+						"lookup_field": "name",
+						"lookup_key": "_id",
+						"join_collection": "countries",
+						"join_fields": ["name"],
+						"join_container": "country"
+                    },
+                    {
+						"name": "language",
+						"title": "لغة",
+						"required": true,
+						"input": "select",
+						"lookup_query_name": "language_list",
+						"lookup_field": "name",
+						"lookup_key": "_id",
+						"show_in_dataview": false,
+						"show_in_read_only_form": false,
+						"exportable": false,
+
+						"join_collection": "languages",
+						"join_fields": ["name"],
+						"join_container": "language"
+					},
+                    { "name": "ingredients", "title": "المكونات", "input": "textarea",  "show_in_dataview": false, "exportable": true },
+					{ "name": "note", "title": "ملاحظة", "input": "textarea", "exportable": true },
+                    { "name": "Steps", "title": "خطوات", "input": "textarea", "exportable": true,  "show_in_dataview": false },
+	             { "name": "fileId", "title": "ملف", "input": "file", "file_collection": "files", "file_container": "file",  "show_in_dataview": false, "exportable": true},
+				]   
+			},
+            
+            {
+                "name": "languages",
+                    "fields": [
+                        { "name": "name", "title": "Name", "required": true, "exportable": true },
+                    ]
+			},
+            {
+                "name": "countries",
+                    "fields": [
+                        { "name": "name", "title": "Name", "required": true, "exportable": true },
+                    ]
+			}
+		],
+
+		"queries": [
+			{
+				"name": "recipies",
+				"collection": "recipies",
+				"filter": {}
+			},
+            {
+				"name": "recipies_arabic",
+				"collection": "recipies_arabic",
+				"filter": {}
+			},
+			{
+				"name": "get_recipe",
+				"collection": "recipies",
+				"filter": {},
+                "find_one": true  
+			},
+            {
+				"name": "get_recipe_arabic",
+				"collection": "recipies_arabic",
+				"filter": {},
+                "find_one": true  
+			},
+            {
+				"name": "move_recipe_arabic",
+				"collection": "recipies_arabic",
+				"filter": {},
+                "find_one": true  
+			},
+			{
+				"name": "recipe",
+				"collection": "recipies",
+				"filter": { "_id": ":recipeId" },
+				"find_one": true
+			},
+            {
+				"name": "recipe_arabic",
+				"collection": "recipies_arabic",
+				"filter": { "_id": ":recipeId" },
+				"find_one": true
+			},
+            {
+                "name": "language_list",
+				"collection": "languages",
+				"filter": {},
+                "options": {
+					"sort": ["name"]
+				}
+            },
+            {
+                "name": "country_list",
+				"collection": "countries",
+				"filter": {},
+                "options": {
+					"sort": ["name"]
+				}
+            },
+		],
+
+		"free_zone": {
+			"components": [
+				{
+					"name": "main_menu",
+					"type": "menu",
+					"items": [
+						{ "title": "Home page/الصفحة الرئيسية", "route": "home" },
+						{ "title": "Recipies",  "route": "recipies" },
+                        { "title": "انت سوف",   "route": "recipies_arabic" }
+					]
+				}
+			],
+
+			"pages": [
+				{
+					"name": "home",
+					"components": [
+						{
+							"name": "home_jumbotron",
+							"title": "Input application!",
+							"type": "jumbotron",
+							"text": "<b> Front for the input step </b>",
+							"button_title": "Continue &raquo;",
+							"button_route": "recipies_arabic"
+						}
+					]
+				},
+				{
+					"name": "recipies",
+					"components": [
+						{
+							"name": "view",
+							"type": "data_view",
+							"title": "Recipies",
+							"text_if_empty": "No recipies :(",
+
+							"query_name": "recipies",
+							"query_params": [],
+
+							"insert_route": "recipies.insert",
+							"edit_route": "recipies.edit",
+							"edit_route_params": [
+								{ "name": "recipeId", "value": "this._id" }
+							],
+							"details_route": "recipies.details",
+							"details_route_params": [
+								{ "name": "recipeId", "value": "this._id" }
+							]
+						}
+						
+					],
+					"pages": [
+
+						{
+							"name": "details",
+							"route_params": ["recipeId"],
+							"components": [
+								{
+									"name": "details_form",
+									"type": "form",
+									"mode": "read_only",
+									"title": "{{recipe.name}}",
+									"layout": "horizontal",
+
+									"query_name": "recipe",
+									"query_params": [],
+
+									"close_route": "recipies",
+									"back_route": "recipies"
+								}
+							]
+						},
+
+						{
+							"name": "edit",
+							"route_params": ["recipeId"],
+							"components": [
+								{
+									"name": "edit_form",
+									"type": "form",
+									"mode": "update",
+									"title": "Translate recipe",
+									"submit_route": "recipies_arabic",
+									"cancel_route": "recipies_arabic",
+
+									"query_name": "recipe_arabic",
+									"query_params": []
+								}
+							]
+						},
+						
+						{
+							"name": "insert",
+							"components": [
+								{
+									"name": "add_file",
+									"title": "Add new file",
+									"type": "form",
+									"mode": "insert",
+									"query_name": "get_recipe",
+									"submit_route": "recipies",
+									"cancel_route": "recipies"
+								}
+							]
+						}
+					]
+				},
+                {
+					"name": "recipies_arabic",
+					"components": [
+						{
+							"name": "view",
+							"type": "data_view",
+							"title": "انت سوف",
+							"text_if_empty": "لا وصفات باللغة العربية بعد :(",
+
+							"query_name": "recipies_arabic",
+							"query_params": [],
+
+							"insert_route": "recipies_arabic.insert",
+							"edit_route": "recipies_arabic.edit",
+							"edit_route_params": [
+								{ "name": "recipeId", "value": "this._id" }
+							],
+							"details_route": "recipies_arabic.details",
+							"details_route_params": [
+								{ "name": "recipeId", "value": "this._id" }
+							]
+						}
+						
+					],
+					"pages": [
+						{
+							"name": "details",
+							"route_params": ["recipeId"],
+							"components": [
+								{
+									"name": "details_form",
+									"type": "form",
+									"mode": "read_only",
+									"title": "{{recipie_arabic.name}}",
+									"layout": "horizontal",
+
+									"query_name": "recipe_arabic",
+									"query_params": [],
+
+									"close_route": "recipies_arabic",
+									"back_route": "recipies_arabic"
+								}
+							]
+						},
+
+						{
+							"name": "edit",
+							"route_params": ["recipeId"],
+							"components": [
+								{
+									"name": "edit_form",
+									"type": "form",
+									"mode": "update",
+									"title": "تغيير صفة",
+									"submit_route": "recipies_arabic",
+									"cancel_route": "recipies_arabic",
+
+									"query_name": "recipe_arabic",
+									"query_params": []
+								}
+							]
+						},
+						
+						{
+							"name": "insert",
+							"components": [
+								{
+									"name": "add_file",
+									"title": "إضافة صفة جديدة",
+									"type": "form",
+									"mode": "insert",
+									"query_name": "get_recipe_arabic",
+									"submit_route": "recipies_arabic",
+									"cancel_route": "recipies_arabic"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+		,"router_config": {
+		{ "title": "Cooking with Swedish groceries", "route": "home"}
+    		}
+	}
+}
