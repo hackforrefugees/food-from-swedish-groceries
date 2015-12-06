@@ -37,11 +37,27 @@
 						"lookup_key": "_id",
 						"show_in_dataview": true,
 						"show_in_read_only_form": false,
+                        "show_in_dataview": false,
+						"join_collection": "countries",
+						"join_fields": ["name"],
+						"join_container": "country"
+                    },
+					{ 
+                        "name": "thiscountry", 
+                        "title": "Country", 
+                        "default": "Sweden", 
+                        "exportable": true,
+						"lookup_query_name": "get_country",
+						"lookup_field": "name",
+						"lookup_key": "_id",
+						"show_in_dataview": true,
+						"show_in_read_only_form": false,
                         
 						"join_collection": "countries",
 						"join_fields": ["name"],
 						"join_container": "country"
                     },
+                    
                     {
 						"name": "language",
 						"title": "Language",
@@ -61,17 +77,17 @@
                     { "name": "ingredients", "title": "Ingredients", "input": "textarea", "show_in_dataview": false, "show_in_dataview": false, "exportable": true },
 					{ "name": "note", "title": "Note", "input": "textarea", "exportable": true },
                     { "name": "Steps", "title": "Steps", "input": "textarea", "exportable": true,  "show_in_dataview": false },
-                    { "name": "fileId", "title": "File", "input": "file", "file_collection": "files", "file_container": "file", "exportable": true},
+                    { "name": "fileId", "title": "File", "input": "file", "file_collection": "files", "file_container": "file", "show_in_dataview": false,   "exportable": true},
 				]
 			},
             
             {
 				"name": "recipies_arabic",
 				"fields": [
-					{ "name": "name", "title": "Name", "required": true, "exportable": true },
+					{ "name": "name", "title": "اسم", "required": true, "exportable": true },
 					{ 
                         "name": "country", 
-                        "title": "Country", 
+                        "title": "بلد", 
                         "default": "أفغانستان", 
 						"input": "select",
                         "exportable": true,
@@ -84,7 +100,7 @@
                     },
                     {
 						"name": "language",
-						"title": "Language",
+						"title": "لغة",
 						"required": true,
 						"input": "select",
 						"lookup_query_name": "language_list",
@@ -101,7 +117,7 @@
                     { "name": "ingredients", "title": "Ingredients", "input": "textarea",  "show_in_dataview": false, "exportable": true },
 					{ "name": "note", "title": "Note", "input": "textarea", "exportable": true },
                     { "name": "Steps", "title": "Steps", "input": "textarea", "exportable": true,  "show_in_dataview": false },
-	             { "name": "fileId", "title": "File", "input": "file", "file_collection": "files", "file_container": "file", "exportable": true},
+	             { "name": "fileId", "title": "File", "input": "file", "file_collection": "files", "file_container": "file",  "show_in_dataview": false, "exportable": true},
 				]   
 			},
             
@@ -291,8 +307,8 @@
 						{
 							"name": "view",
 							"type": "data_view",
-							"title": "",
-							"text_if_empty": "insert_arabic :(",
+							"title": "انت سوف",
+							"text_if_empty": "لا وصفات باللغة العربية بعد :(",
 
 							"query_name": "recipies_arabic",
 							"query_params": [],
