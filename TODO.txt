@@ -1,4 +1,4 @@
-TODO list for the Food from Swedihs groceries 
+﻿TODO list for the Food from Swedihs groceries 
 
 1) Email volunteers to specify the problem space
 
@@ -43,3 +43,36 @@ use data from the other language collection. HARD TO DO IT SEEMS
 
 change strings to arabic (ask someone who speaks arabic for help). DONE 
 
+
+
+****************************************************************************
+Importent!!!!
+****************************************************************************
+
+change from:
+
+---------------------------------------------------------------------------------
+<p class="form-control-static">
+	{{recipe.fileId}}
+</p> 
+---------------------------------------------------------------------------------
+
+to this:
+
+_________________________________________________________________________________
+<p class="form-control-static">
+	<a href="/cfs/files/files/{{recipe.fileId}}" target="_blank">
+		<img src="/cfs/files/files/{{recipe.fileId}}" width="50%">
+	</a>
+</p>
+_________________________________________________________________________________
+
+in the file:
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+C:\Users\Spock\Documents\GitHub\food-from-swedish-groceries\FoodHack\client\views\recipies\details\details.html
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+AND:::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+C:\Users\Spock\Documents\GitHub\food-from-swedish-groceries\FoodHack\client\views\recipies_arabic\details\details.html
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
