@@ -109,9 +109,25 @@ Template.RecipiesEditEditForm.events({
 		e.preventDefault();
 
 		/*BACK_REDIRECT*/
-	}
+	}, 
 
-	
+	"change #field-file-id": function(e, t) {
+	e.preventDefault();
+	var fileInput = $(e.currentTarget);
+	var dataField = fileInput.attr("data-field");
+	var hiddenInput = fileInput.closest("form").find("input[name='" + dataField + "']");
+
+	FS.Utility.eachFile(event, function(file) {
+		Files.insert(file, function (err, fileObj) {
+			if(err) {
+				console.log(err);
+			} else {
+				hiddenInput.val(fileObj._id);
+			}
+		});
+	});
+}
+
 });
 
 Template.RecipiesEditEditForm.helpers({

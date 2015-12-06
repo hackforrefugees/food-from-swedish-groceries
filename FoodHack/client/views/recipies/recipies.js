@@ -31,7 +31,7 @@ var RecipiesViewItems = function(cursor) {
 	} else {
 		searchString = searchString.replace(".", "\\.");
 		var regEx = new RegExp(searchString, "i");
-		var searchFields = ["name", "country", "language", "ingredients", "note", "Steps"];
+		var searchFields = ["name", "country", "language", "ingredients", "note", "Steps", "fileId"];
 		filtered = _.filter(raw, function(item) {
 			var match = false;
 			_.each(searchFields, function(field) {
@@ -61,7 +61,7 @@ var RecipiesViewItems = function(cursor) {
 
 var RecipiesViewExport = function(cursor, fileType) {
 	var data = RecipiesViewItems(cursor);
-	var exportFields = ["name", "country", "ingredients", "note", "Steps"];
+	var exportFields = ["name", "country", "ingredients", "note", "Steps", "fileId"];
 
 	var str = convertArrayOfObjects(data, exportFields, fileType);
 
