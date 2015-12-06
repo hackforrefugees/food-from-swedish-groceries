@@ -13,7 +13,7 @@
 <template name="RecipiesEditEditForm">
 	<div id="recipies-edit-edit-form" class="">
 		<h2 id="component-title">
-			Edit recipe
+			Translate recipe
 		</h2>
 		<form role="form">
 			{{#if errorMessage}}
@@ -32,7 +32,7 @@
 					Name
 				</label>
 				<div class="input-div">
-					<input type="text" name="name" value="{{recipe.name}}" class="form-control" autofocus="autofocus" required="required">
+					<input type="text" name="name" value="{{recipe_arabic.name}}" class="form-control" autofocus="autofocus" required="required">
 					<span id="help-text" class="help-block">
 					</span>
 					<span id="error-text" class="help-block">
@@ -46,7 +46,7 @@
 				<div class="input-div">
 					<select class="form-control" name="country">
 						{{#each country_list}}
-						<option value="{{_id}}" {{optionIsSelected ../recipe.country _id}}>
+						<option value="{{_id}}" {{optionIsSelected ../recipe_arabic.country _id}}>
 							{{name}}
 						</option>
 						{{/each}}
@@ -64,7 +64,7 @@
 				<div class="input-div">
 					<select class="form-control" name="language" required="required">
 						{{#each language_list}}
-						<option value="{{_id}}" {{optionIsSelected ../recipe.language _id}}>
+						<option value="{{_id}}" {{optionIsSelected ../recipe_arabic.language _id}}>
 							{{name}}
 						</option>
 						{{/each}}
@@ -80,7 +80,7 @@
 					Ingredients
 				</label>
 				<div class="input-div">
-					<textarea class="form-control" name="ingredients">{{recipe.ingredients}}</textarea>
+					<textarea class="form-control" name="ingredients">{{recipe_arabic.ingredients}}</textarea>
 					<span id="help-text" class="help-block">
 					</span>
 					<span id="error-text" class="help-block">
@@ -92,7 +92,7 @@
 					Note
 				</label>
 				<div class="input-div">
-					<textarea class="form-control" name="note">{{recipe.note}}</textarea>
+					<textarea class="form-control" name="note">{{recipe_arabic.note}}</textarea>
 					<span id="help-text" class="help-block">
 					</span>
 					<span id="error-text" class="help-block">
@@ -104,7 +104,7 @@
 					Steps
 				</label>
 				<div class="input-div">
-					<textarea class="form-control" name="Steps">{{recipe.Steps}}</textarea>
+					<textarea class="form-control" name="Steps">{{recipe_arabic.Steps}}</textarea>
 					<span id="help-text" class="help-block">
 					</span>
 					<span id="error-text" class="help-block">
@@ -117,7 +117,7 @@
 				</label>
 				<div class="input-div">
 					<input type="file" id="field-file-id" class="file" multiple="false" data-show-upload="false" data-show-caption="true" data-field="fileId">
-					<input type="hidden" name="fileId" value="{{recipe.fileId}}">
+					<input type="hidden" name="fileId" value="{{recipe_arabic.fileId}}">
 					<span id="help-text" class="help-block">
 					</span>
 					<span id="error-text" class="help-block">

@@ -67,7 +67,7 @@ Template.RecipiesEditEditForm.events({
 				}
 			}
 
-			Router.go("recipies", {});
+			Router.go("recipies_arabic", {});
 		}
 
 		function errorAction(msg) {
@@ -87,7 +87,7 @@ Template.RecipiesEditEditForm.events({
 			function(values) {
 				
 
-				Recipies.update({ _id: t.data.recipe._id }, { $set: values }, function(e) { if(e) errorAction(e); else submitAction(); });
+				RecipiesArabic.update({ _id: t.data.recipe_arabic._id }, { $set: values }, function(e) { if(e) errorAction(e); else submitAction(); });
 			}
 		);
 
@@ -98,7 +98,7 @@ Template.RecipiesEditEditForm.events({
 
 		
 
-		Router.go("recipies", {});
+		Router.go("recipies_arabic", {});
 	},
 	"click #form-close-button": function(e, t) {
 		e.preventDefault();

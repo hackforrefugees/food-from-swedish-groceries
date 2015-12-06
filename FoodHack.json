@@ -25,7 +25,7 @@
 			{
 				"name": "recipies",
 				"fields": [
-					{ "name": "name", "title": "Name", "required": true, "exportable": true },
+					{ "name": "name", "title": "Name", "required": true},
 					{ 
                         "name": "country", 
                         "title": "Country", 
@@ -58,11 +58,10 @@
 						"join_fields": ["name"],
 						"join_container": "language"
 					},
-                    { "name": "ingredients", "title": "Ingredients", "input": "textarea", "exportable": true },
+                    { "name": "ingredients", "title": "Ingredients", "input": "textarea", "show_in_dataview": false, "show_in_dataview": false, "exportable": true },
 					{ "name": "note", "title": "Note", "input": "textarea", "exportable": true },
                     { "name": "Steps", "title": "Steps", "input": "textarea", "exportable": true,  "show_in_dataview": false },
-
-	             { "name": "fileId", "title": "File", "input": "file", "file_collection": "files", "file_container": "file", "exportable": true},
+                    { "name": "fileId", "title": "File", "input": "file", "file_collection": "files", "file_container": "file", "exportable": true},
 				]
 			},
             
@@ -99,11 +98,11 @@
 						"join_fields": ["name"],
 						"join_container": "language"
 					},
-                    { "name": "ingredients", "title": "Ingredients", "input": "textarea", "exportable": true },
+                    { "name": "ingredients", "title": "Ingredients", "input": "textarea",  "show_in_dataview": false, "exportable": true },
 					{ "name": "note", "title": "Note", "input": "textarea", "exportable": true },
                     { "name": "Steps", "title": "Steps", "input": "textarea", "exportable": true,  "show_in_dataview": false },
 	             { "name": "fileId", "title": "File", "input": "file", "file_collection": "files", "file_container": "file", "exportable": true},
-				]
+				]   
 			},
             
             {
@@ -143,17 +142,11 @@
 				"filter": {},
                 "find_one": true  
 			},
-			{
-				"name": "recipies_empty",
-				"collection": "recipies",
-				"filter": {"_id": null},
-				"find_one": true
-			},
             {
-				"name": "recipies_empty_arabic",
+				"name": "move_recipe_arabic",
 				"collection": "recipies_arabic",
-				"filter": {"_id": null},
-				"find_one": true
+				"filter": {},
+                "find_one": true  
 			},
 			{
 				"name": "recipe",
@@ -186,7 +179,6 @@
 		],
 
 		"free_zone": {
-
 			"components": [
 				{
 					"name": "main_menu",
@@ -247,7 +239,7 @@
 									"name": "details_form",
 									"type": "form",
 									"mode": "read_only",
-									"title": "Details",
+									"title": "{{recipe.name}}",
 									"layout": "horizontal",
 
 									"query_name": "recipe",
@@ -267,11 +259,11 @@
 									"name": "edit_form",
 									"type": "form",
 									"mode": "update",
-									"title": "Edit recipe",
-									"submit_route": "recipies",
-									"cancel_route": "recipies",
+									"title": "Translate recipe",
+									"submit_route": "recipies_arabic",
+									"cancel_route": "recipies_arabic",
 
-									"query_name": "recipe",
+									"query_name": "recipe_arabic",
 									"query_params": []
 								}
 							]
@@ -295,12 +287,11 @@
 				},
                 {
 					"name": "recipies_arabic",
-                    "title": "Welcome finally",
 					"components": [
 						{
 							"name": "view",
 							"type": "data_view",
-							"title": "Recipies2",
+							"title": "",
 							"text_if_empty": "insert_arabic :(",
 
 							"query_name": "recipies_arabic",
@@ -327,7 +318,7 @@
 									"name": "details_form",
 									"type": "form",
 									"mode": "read_only",
-									"title": "Details",
+									"title": "{{recipie_arabic.name}}",
 									"layout": "horizontal",
 
 									"query_name": "recipe_arabic",
@@ -347,7 +338,7 @@
 									"name": "edit_form",
 									"type": "form",
 									"mode": "update",
-									"title": "insert arabic",
+									"title": "تغيير صفة",
 									"submit_route": "recipies_arabic",
 									"cancel_route": "recipies_arabic",
 
@@ -362,7 +353,7 @@
 							"components": [
 								{
 									"name": "add_file",
-									"title": "inserarabic",
+									"title": "إضافة صفة جديدة",
 									"type": "form",
 									"mode": "insert",
 									"query_name": "get_recipe_arabic",

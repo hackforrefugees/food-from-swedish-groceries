@@ -61,7 +61,7 @@ var RecipiesViewItems = function(cursor) {
 
 var RecipiesViewExport = function(cursor, fileType) {
 	var data = RecipiesViewItems(cursor);
-	var exportFields = ["name", "country", "ingredients", "note", "Steps", "fileId"];
+	var exportFields = ["country", "ingredients", "note", "Steps", "fileId"];
 
 	var str = convertArrayOfObjects(data, exportFields, fileType);
 
