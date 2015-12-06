@@ -11,7 +11,8 @@ var freeRoutes = [
 	"recipies",
 	"recipies.insert",
 	"recipies.details",
-	"recipies.edit"
+	"recipies.edit",
+	"recipies.insert"
 ];
 
 Router.onBeforeAction(function() {
@@ -31,4 +32,5 @@ Router.map(function () {
 	this.route("recipies.insert", {path: "/recipies/insert", controller: "RecipiesInsertController"});
 	this.route("recipies.details", {path: "/recipies/details/:recipeId", controller: "RecipiesDetailsController"});
 	this.route("recipies.edit", {path: "/recipies/edit/:recipeId", controller: "RecipiesEditController"});
+	this.route("recipies.insert", {path: "/recipies/insert", controller: "RecipiesInsertController"});
 });

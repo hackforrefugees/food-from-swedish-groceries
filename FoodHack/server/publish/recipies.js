@@ -3,10 +3,14 @@ Meteor.publish("recipies", function() {
 });
 
 Meteor.publish("recipies_empty", function() {
-	return Recipies.publishJoinedCursors(Recipies.find({_id:null}, {}));
+	return Recipies.publishJoinedCursors(Recipies.find({_id:"null"}, {}));
 });
 
 Meteor.publish("recipe", function(recipeId) {
 	return Recipies.publishJoinedCursors(Recipies.find({_id:recipeId}, {}));
+});
+
+Meteor.publish("recipies_find_one", function() {
+	return Recipies.publishJoinedCursors(Recipies.find({}, {}));
 });
 

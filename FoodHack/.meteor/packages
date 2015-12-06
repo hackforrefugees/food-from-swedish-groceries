@@ -36,4 +36,5 @@ mrt:moment
 rajit:bootstrap3-datepicker
 perak:joins
 aldeed:collection2
->>>>>>> ff4624b18b6c19088c75274d3f130fa1ef8920ac
+cfs:standard-packages
+cfs:gridfs

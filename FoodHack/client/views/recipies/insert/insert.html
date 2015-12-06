@@ -6,14 +6,14 @@
 				</div>
 			</div>
 		</div>
-		{{> RecipiesInsertInsertForm}}
+		{{> RecipiesInsertAddFile}}
 	</div>
 </template>
 
-<template name="RecipiesInsertInsertForm">
-	<div id="recipies-insert-insert-form" class="">
+<template name="RecipiesInsertAddFile">
+	<div id="recipies-insert-add-file" class="">
 		<h2 id="component-title">
-			New recipe
+			Add new file
 		</h2>
 		<form role="form">
 			{{#if errorMessage}}
@@ -105,6 +105,19 @@
 				</label>
 				<div class="input-div">
 					<textarea class="form-control" name="Steps"></textarea>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-file-id">
+				<label for="fileId">
+					File
+				</label>
+				<div class="input-div">
+					<input type="file" id="field-file-id" class="file" multiple="false" data-show-upload="false" data-show-caption="true" data-field="fileId">
+					<input type="hidden" name="fileId" value="">
 					<span id="help-text" class="help-block">
 					</span>
 					<span id="error-text" class="help-block">

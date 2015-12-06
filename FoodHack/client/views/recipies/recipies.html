@@ -98,11 +98,17 @@
 				<th class="th-sortable" data-sort="name">
 					Name
 				</th>
+				<th class="th-sortable" data-sort="country">
+					Country
+				</th>
 				<th class="th-sortable" data-sort="ingredients">
 					Ingredients
 				</th>
 				<th class="th-sortable" data-sort="note">
 					Note
+				</th>
+				<th class="th-sortable" data-sort="fileId">
+					File
 				</th>
 				<th>
 					&nbsp;
@@ -124,10 +130,16 @@
 			{{name}}
 		</td>
 		<td>
+			{{country}}
+		</td>
+		<td>
 			{{ingredients}}
 		</td>
 		<td>
 			{{note}}
+		</td>
+		<td>
+			{{fileId}}
 		</td>
 		<td class="td-icon">
 			<span id="edit-button" class="fa fa-pencil " title="Edit">

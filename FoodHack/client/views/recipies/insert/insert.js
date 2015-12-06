@@ -12,11 +12,11 @@ Template.RecipiesInsert.helpers({
 	
 });
 
-Template.RecipiesInsertInsertForm.rendered = function() {
+Template.RecipiesInsertAddFile.rendered = function() {
 	
 
-	pageSession.set("recipiesInsertInsertFormInfoMessage", "");
-	pageSession.set("recipiesInsertInsertFormErrorMessage", "");
+	pageSession.set("recipiesInsertAddFileInfoMessage", "");
+	pageSession.set("recipiesInsertAddFileErrorMessage", "");
 
 	$(".input-group.date").each(function() {
 		var format = $(this).find("input[type='text']").attr("data-format");
@@ -44,25 +44,25 @@ Template.RecipiesInsertInsertForm.rendered = function() {
 	$("input[autofocus]").focus();
 };
 
-Template.RecipiesInsertInsertForm.events({
+Template.RecipiesInsertAddFile.events({
 	"submit": function(e, t) {
 		e.preventDefault();
-		pageSession.set("recipiesInsertInsertFormInfoMessage", "");
-		pageSession.set("recipiesInsertInsertFormErrorMessage", "");
+		pageSession.set("recipiesInsertAddFileInfoMessage", "");
+		pageSession.set("recipiesInsertAddFileErrorMessage", "");
 
 		var self = this;
 
 		function submitAction(msg) {
-			var recipiesInsertInsertFormMode = "insert";
+			var recipiesInsertAddFileMode = "insert";
 			if(!t.find("#form-cancel-button")) {
-				switch(recipiesInsertInsertFormMode) {
+				switch(recipiesInsertAddFileMode) {
 					case "insert": {
 						$(e.target)[0].reset();
 					}; break;
 
 					case "update": {
 						var message = msg || "Saved.";
-						pageSession.set("recipiesInsertInsertFormInfoMessage", message);
+						pageSession.set("recipiesInsertAddFileInfoMessage", message);
 					}; break;
 				}
 			}
@@ -73,7 +73,7 @@ Template.RecipiesInsertInsertForm.events({
 		function errorAction(msg) {
 			msg = msg || "";
 			var message = msg.message || msg || "Error.";
-			pageSession.set("recipiesInsertInsertFormErrorMessage", message);
+			pageSession.set("recipiesInsertAddFileErrorMessage", message);
 		}
 
 		validateForm(
@@ -109,17 +109,33 @@ Template.RecipiesInsertInsertForm.events({
 		e.preventDefault();
 
 		/*BACK_REDIRECT*/
-	}
+	}, 
 
-	
+	"change #field-file-id": function(e, t) {
+	e.preventDefault();
+	var fileInput = $(e.currentTarget);
+	var dataField = fileInput.attr("data-field");
+	var hiddenInput = fileInput.closest("form").find("input[name='" + dataField + "']");
+
+	FS.Utility.eachFile(event, function(file) {
+		Files.insert(file, function (err, fileObj) {
+			if(err) {
+				console.log(err);
+			} else {
+				hiddenInput.val(fileObj._id);
+			}
+		});
+	});
+}
+
 });
 
-Template.RecipiesInsertInsertForm.helpers({
+Template.RecipiesInsertAddFile.helpers({
 	"infoMessage": function() {
-		return pageSession.get("recipiesInsertInsertFormInfoMessage");
+		return pageSession.get("recipiesInsertAddFileInfoMessage");
 	},
 	"errorMessage": function() {
-		return pageSession.get("recipiesInsertInsertFormErrorMessage");
+		return pageSession.get("recipiesInsertAddFileErrorMessage");
 	}
 	
 });
