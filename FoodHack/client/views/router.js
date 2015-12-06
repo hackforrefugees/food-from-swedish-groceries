@@ -3,7 +3,9 @@ Router.configure({
 	routeControllerNameConverter: "upperCamelCase",
 	layoutTemplate: "layout",
 	notFoundTemplate: "notFound",
-	loadingTemplate: "loading"
+	loadingTemplate: "loading",
+	title: "Cooking with Swedish groceries",
+	route: "home"
 });
 
 var freeRoutes = [

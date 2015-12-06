@@ -14,7 +14,3 @@ Meteor.publish("recipe", function(recipeId) {
 	return Recipies.publishJoinedCursors(Recipies.find({_id:recipeId}, {}));
 });
 
-Meteor.publish("recipies_find_one", function() {
-	return Recipies.publishJoinedCursors(Recipies.find({}, {}));
-});
-

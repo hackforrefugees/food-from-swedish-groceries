@@ -22,7 +22,6 @@ this.RecipiesInsertController = RouteController.extend({
 			Meteor.subscribe("country_list"),
 			Meteor.subscribe("language_list"),
 			Meteor.subscribe("get_recipe")
-			Meteor.subscribe("recipies")
 		];
 		var ready = true;
 		_.each(subs, function(sub) {
@@ -40,7 +39,6 @@ this.RecipiesInsertController = RouteController.extend({
 			country_list: Countries.find({}, {sort:["name"]}),
 			language_list: Languages.find({}, {sort:["name"]}),
 			get_recipe: Recipies.findOne({}, {})
-			recipies: Recipies.find({}, {})
 		};
 		/*DATA_FUNCTION*/
 	},

@@ -3,11 +3,14 @@
 
 		"title": "Cooking with Swedish groceries",
 
-		"theme": "bootswatch-darkly",
+		"theme": "bootswatch-journal",
 
-        "server_startup_code": "Languages.insert({ name: 'Danska'});
+        "server_startup_code": "
+                            Languages.remove({});
+			    Languages.insert({ name: 'Danska'});
                             Languages.insert({ name: 'Arabiska'}); 
                             Languages.insert({ name: 'Franska'});
+			    Countries.remove({});
                             Countries.insert({ name: 'Sverige'});
                             Countries.insert({ name: 'Tunisien'});",
         
@@ -134,13 +137,12 @@
 			"pages": [
 				{
 					"name": "home",
-					"title": "",
 					"components": [
 						{
 							"name": "home_jumbotron",
-							"title": "Example application",
+							"title": "Input application!",
 							"type": "jumbotron",
-							"text": "<b>We don't use this page I don't think. </b>",
+							"text": "<b> Front for the input step </b>",
 							"button_title": "Continue &raquo;",
 							"button_route": "recipies"
 						}
@@ -244,5 +246,8 @@
 				}
 			]
 		}
+		,"router_config": {
+		{ "title": "Cooking with Swedish groceries", "route": "home"}
+    		}
 	}
 }

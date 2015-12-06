@@ -7,9 +7,12 @@ Meteor.startup(function() {
 	}
 
 	
-Languages.insert({ name: 'Danska'});
+
+                            Languages.remove({});
+			    Languages.insert({ name: 'Danska'});
                             Languages.insert({ name: 'Arabiska'}); 
                             Languages.insert({ name: 'Franska'});
+			    Countries.remove({});
                             Countries.insert({ name: 'Sverige'});
                             Countries.insert({ name: 'Tunisien'});
 });
