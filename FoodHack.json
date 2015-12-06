@@ -35,13 +35,20 @@
 						"lookup_query_name": "country_list",
 						"lookup_field": "name",
 						"lookup_key": "_id",
-						"show_in_dataview": true,
+						"show_in_dataview": false,
 						"show_in_read_only_form": false,
-                        "show_in_dataview": false,
+                        
 						"join_collection": "countries",
 						"join_fields": ["name"],
-						"join_container": "country"
+						"join_container": "nation"
                     },
+					{
+						"name": "nation.name",
+						"title": "Country",
+						"show_in_insert_form": false,
+						"show_in_update_form": false,
+						"exportable": true
+					},
 
                     
                     {
@@ -139,13 +146,31 @@
                 "find_one": true  
 			},
             {
-				"name": "get_recipe_arabic",
+				"name": "move_recipe_arabic",
 				"collection": "recipies_arabic",
 				"filter": {},
-                "find_one": true  
+                "find_one": true,
+                "options": {
+					"field": "
+                    function(doc) { 
+                        var sum = 0; 
+                        recipies.find({}).map(
+                            function(item) { 
+                                if(item.totalAmount) 
+                                    sum += item.totalAmount; 
+                            }
+                        ); 
+                        doc.totalAmount = sum; 
+                        return doc; 
+                    }",
+					"sort": ["name"]
+				},
+                "related_queries": [
+					{ "name": "get_recipe" }
+				] 
 			},
             {
-				"name": "move_recipe_arabic",
+				"name": "get_recipe_arabic",
 				"collection": "recipies_arabic",
 				"filter": {},
                 "find_one": true  
