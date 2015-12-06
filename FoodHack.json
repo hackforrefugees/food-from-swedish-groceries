@@ -58,7 +58,8 @@
                     { "name": "ingredients", "title": "Ingredients", "input": "textarea", "exportable": true },
 					{ "name": "note", "title": "Note", "input": "textarea", "exportable": true },
                     { "name": "Steps", "title": "Steps", "input": "textarea", "exportable": true,  "show_in_dataview": false },
-                    { "name": "fileId", "title": "File", "input": "file", "file_collection": "files", "file_container": "file", "exportable": true},
+
+	             { "name": "fileId", "title": "File", "input": "file", "file_collection": "files", "file_container": "file", "exportable": true},
 				]
 			},
             {
